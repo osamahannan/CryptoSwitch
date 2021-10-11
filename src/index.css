@@ -85,13 +85,14 @@ ul li a:hover {
 
 .coin-info {
   display: flex;
-  justify-content: center;
   align-items: center;
+  width: 164px;
 }
 
 .coin-container {
   display: flex;
   flex-direction: column;
+  border: 2px solid black;
 }
 
 .coin-data {
@@ -113,6 +114,16 @@ ul li a:hover {
 .coin-current {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
 }
 
 .contact-button {
