@@ -22,34 +22,42 @@ const Coindata = () => {
 
                 <div className="coin-container">
 
-                    {coins.map(coin => {
-                        return (
-                            <div className="coin-detail" key={coin.id}>
+                    <div className="coin-column">
 
-                                <div className="coin-info">
-                                    <img src={coin.image} className="coin-pic" alt="coin pic" />
+                        {coins.map(coin => {
+                            return (
+                                <div className="coin-detail" key={coin.id}>
 
-                                    <div className="coin-data">
-                                        <span className="coin-name">{coin.name}</span>
-                                        <span>{coin.symbol}</span>
+                                    <div className="coin-info">
+                                        <img src={coin.image} className="coin-pic" alt="coin pic" />
+
+                                        <div className="coin-data">
+                                            <span className="coin-name">{coin.name}</span>
+                                            <span>{coin.symbol}</span>
+                                        </div>
                                     </div>
+
+                                    <div className="coin-current">
+                                        <span> &#x20B9; {coin.current_price}</span>
+                                        <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h}` : coin.price_change_percentage_24h}%</span>
+                                    </div>
+
+                                    <div className="wallet-button">
+                                        <button className="btn">Add to Wallet</button>
+                                    </div>
+
                                 </div>
+                            )
+                        })}
+                    </div>
 
-                                <div className="coin-current">
-                                    <span> &#x20B9; {coin.current_price}</span>
-                                    <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h}` : coin.price_change_percentage_24h}%</span>
-                                </div>
-
-                                <div className="wallet-button">
-                                    <button className="btn">Add to Wallet</button>
-                                </div>
-
-                            </div>
-                        )
-                    })}
-
+                    <div className="graph-container">
+                        <h1>This is graph section.</h1>
+                    </div>
 
                 </div>
+
+
             </div>
         </>
 

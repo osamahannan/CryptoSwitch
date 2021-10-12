@@ -91,8 +91,13 @@ ul li a:hover {
 
 .coin-container {
   display: flex;
-  flex-direction: column;
   border: 2px solid black;
+}
+
+.coin-column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
 }
 
 .coin-data {
@@ -138,5 +143,11 @@ ul li a:hover {
   border-radius: 5px;
   cursor: pointer;
   font-size: 17px;
+}
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
 }
 
