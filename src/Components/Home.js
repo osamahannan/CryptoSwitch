@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import BarChart from './BarChart';
 
 const Coindata = () => {
 
@@ -52,7 +53,10 @@ const Coindata = () => {
                     </div>
 
                     <div className="graph-container">
-                        <h1>This is graph section.</h1>
+
+                        <BarChart />
+                        {/* <h1>This is graph section</h1> */}
+
                     </div>
 
                 </div>
