@@ -53,14 +53,30 @@ const Coindata = () => {
                     </div>
 
                     <div className="graph-container">
+                        <div className="graph-coin">
+                            <div className="graph-coin-detail" >
 
-                        <BarChart />
-                        {/* <h1>This is graph section</h1> */}
+                                <div className="coin-info">
+                                    <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579" className="coin-pic" alt="coin pic" />
 
+                                    <div className="coin-data">
+                                        <span className="coin-name">Bitcoin</span>
+                                        <span>btc</span>
+                                    </div>
+                                </div>
+
+                                <div className="coin-current">
+                                    <span> &#x20B9; {4200000}</span>
+                                    <span > 2.88%</span>
+                                </div>
+
+                            </div>
+
+                            <BarChart />
+                        </div>
                     </div>
 
                 </div>
-
 
             </div>
         </>
