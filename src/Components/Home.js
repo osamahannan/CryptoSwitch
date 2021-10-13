@@ -5,17 +5,22 @@ import LineChart from './LineChart';
 const Coindata = () => {
 
     const [coins, setCoins] = useState([]);
-    const [data, setData] = useState(coins[0]);
+    const [data, setData] = useState("");
 
     useEffect(() => {
         axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=20&page=1&sparkline=false")
             .then(res => {
                 setCoins(res.data);
-                
+                setData(res.data[0]);
+
             }).catch(error => {
                 console.log(error);
             })
     }, [])
+
+    const dataHandler = (coin) => {
+        setData(coin);
+    }
 
     return (
         <>
@@ -28,7 +33,7 @@ const Coindata = () => {
 
                         {coins.map(coin => {
                             return (
-                                <div className="coin-detail" key={coin.id} onClick= {() => setData(coin)}>
+                                <div className="coin-detail" key={coin.id} onClick={() => dataHandler(coin)}>
 
                                     <div className="coin-info">
                                         <img src={coin.image} className="coin-pic" alt="coin pic" />
@@ -61,14 +66,14 @@ const Coindata = () => {
                                     <img src={data.image} className="coin-pic" alt="coin pic" />
 
                                     <div className="coin-data">
-                                        <span className="coin-name">Bitcoin</span>
-                                        <span>btc</span>
+                                        <span className="coin-name">{data.name}</span>
+                                        <span>{data.symbol}</span>
                                     </div>
                                 </div>
 
                                 <div className="coin-current">
-                                    <span> &#x20B9; {4200000}</span>
-                                    <span > 2.88%</span>
+                                    <span> &#x20B9; {data.current_price}</span>
+                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h}` : data.price_change_percentage_24h}%</span>
                                 </div>
 
                             </div>
