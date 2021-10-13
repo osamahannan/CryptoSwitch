@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2';
 
-const BarChart = () => {
+const LineChart = () => {
     return (
         <div className="chart">
             <Line
@@ -40,4 +40,4 @@ const BarChart = () => {
     )
 }
 
-export default BarChart
+export default LineChart

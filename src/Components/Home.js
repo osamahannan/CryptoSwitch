@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import BarChart from './BarChart';
+import LineChart from './LineChart';
 
 const Coindata = () => {
 
@@ -28,7 +28,7 @@ const Coindata = () => {
 
                         {coins.map(coin => {
                             return (
-                                <div className="coin-detail" key={coin.id} onClick= {setData(coin)}>
+                                <div className="coin-detail" key={coin.id} onClick= {() => setData(coin)}>
 
                                     <div className="coin-info">
                                         <img src={coin.image} className="coin-pic" alt="coin pic" />
@@ -58,7 +58,7 @@ const Coindata = () => {
                             <div className="graph-coin-detail" >
 
                                 <div className="coin-info">
-                                    <img src="" className="coin-pic" alt="coin pic" />
+                                    <img src={data.image} className="coin-pic" alt="coin pic" />
 
                                     <div className="coin-data">
                                         <span className="coin-name">Bitcoin</span>
@@ -73,7 +73,7 @@ const Coindata = () => {
 
                             </div>
 
-                            <BarChart />
+                            <LineChart />
                         </div>
                     </div>
 
