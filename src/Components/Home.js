@@ -8,7 +8,7 @@ const Coindata = () => {
     const [data, setData] = useState("");
 
     useEffect(() => {
-        axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=20&page=1&sparkline=false")
+        axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false")
             .then(res => {
                 setCoins(res.data);
                 setData(res.data[0]);
@@ -72,8 +72,8 @@ const Coindata = () => {
                                 </div>
 
                                 <div className="coin-current">
-                                    <span> &#x20B9; {data.current_price.toLocaleString()}</span>
-                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h.toFixed(2)}` : data.price_change_percentage_24h.toFixed(2)}%</span>
+                                    <span> &#x20B9; {data.current_price}</span>
+                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h}` : data.price_change_percentage_24h}%</span>
                                 </div>
 
                             </div>
