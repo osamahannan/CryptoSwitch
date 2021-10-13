@@ -45,8 +45,8 @@ const Coindata = () => {
                                     </div>
 
                                     <div className="coin-current">
-                                        <span> &#x20B9; {coin.current_price}</span>
-                                        <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h}` : coin.price_change_percentage_24h}%</span>
+                                        <span> &#x20B9; {coin.current_price.toLocaleString()}</span>
+                                        <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h.toFixed(2)}` : coin.price_change_percentage_24h.toFixed(2)}%</span>
                                     </div>
 
                                     <div className="wallet-button">
@@ -72,8 +72,8 @@ const Coindata = () => {
                                 </div>
 
                                 <div className="coin-current">
-                                    <span> &#x20B9; {data.current_price}</span>
-                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h}` : data.price_change_percentage_24h}%</span>
+                                    <span> &#x20B9; {data.current_price.toLocaleString()}</span>
+                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h.toFixed(2)}` : data.price_change_percentage_24h.toFixed(2)}%</span>
                                 </div>
 
                             </div>
