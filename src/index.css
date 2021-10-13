@@ -11,7 +11,7 @@
   padding: 10px;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(28, 28, 54);
+  background-color: rgb(44 44 84);
   height: 52px;
 }
 
@@ -128,6 +128,7 @@ ul li a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
 }
 
 .green {
@@ -143,6 +144,7 @@ ul li a:hover {
 }
 
 .btn {
+  display: flex;
   padding: 5px 10px;
   background-color: rgb(43, 128, 238);
   color: white;

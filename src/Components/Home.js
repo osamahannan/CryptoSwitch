@@ -5,16 +5,17 @@ import BarChart from './BarChart';
 const Coindata = () => {
 
     const [coins, setCoins] = useState([]);
+    const [data, setData] = useState(coins[0]);
 
     useEffect(() => {
         axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=20&page=1&sparkline=false")
             .then(res => {
                 setCoins(res.data);
+                
             }).catch(error => {
                 console.log(error);
             })
     }, [])
-
 
     return (
         <>
@@ -27,7 +28,7 @@ const Coindata = () => {
 
                         {coins.map(coin => {
                             return (
-                                <div className="coin-detail" key={coin.id}>
+                                <div className="coin-detail" key={coin.id} onClick= {setData(coin)}>
 
                                     <div className="coin-info">
                                         <img src={coin.image} className="coin-pic" alt="coin pic" />
@@ -57,7 +58,7 @@ const Coindata = () => {
                             <div className="graph-coin-detail" >
 
                                 <div className="coin-info">
-                                    <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579" className="coin-pic" alt="coin pic" />
+                                    <img src="" className="coin-pic" alt="coin pic" />
 
                                     <div className="coin-data">
                                         <span className="coin-name">Bitcoin</span>
