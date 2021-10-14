@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { Line } from 'react-chartjs-2';
 import axios from "axios";
 
-const LineChart = () => {
+const LineChart = (id) => {
 
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
-        axios.get("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=INR&days=15&interval=daily")
+        axios.get(`https://api.coingecko.com/api/v3/coins/${history ? id.id : "bitcoin"}/market_chart?vs_currency=INR&days=15&interval=daily`)
             .then(res => {
                 setHistory(res.data.prices.filter(coindata => 
                     coindata[1]
@@ -15,7 +15,10 @@ const LineChart = () => {
             }).catch(error => {
                 console.log(error);
             })
-    }, [])
+            // console.log(history);
+            // console.log(id.id);
+
+    }, [id.id])
 
     return (
         <div className="chart">

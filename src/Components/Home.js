@@ -8,6 +8,7 @@ const Coindata = () => {
     const [graph, setGraph] = useState({});
     const [price, setPrice] = useState(0);
     const [pricechange, setPricechange] = useState(0);
+    const [id, setId] = useState("bitcoin");
 
     useEffect(() => {
         axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false")
@@ -23,6 +24,8 @@ const Coindata = () => {
     }, [])
 
     const dataHandler = (coin) => {
+        setId(coin.id);
+        // console.log(coin.id);
         setGraph(coin);
         setPrice(coin.current_price);
         setPricechange(coin.price_change_percentage_24h);
@@ -84,7 +87,7 @@ const Coindata = () => {
 
                             </div>
 
-                            <LineChart />
+                            <LineChart id={id} />
                         </div>
                     </div>
 
