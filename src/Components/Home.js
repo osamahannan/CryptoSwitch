@@ -5,13 +5,17 @@ import LineChart from './LineChart';
 const Coindata = () => {
 
     const [coins, setCoins] = useState([]);
-    const [data, setData] = useState("");
+    const [graph, setGraph] = useState({});
+    const [price, setPrice] = useState(0);
+    const [pricechange, setPricechange] = useState(0);
 
     useEffect(() => {
         axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false")
             .then(res => {
                 setCoins(res.data);
-                setData(res.data[0]);
+                setGraph(res.data[0]);
+                setPrice(res.data[0].current_price);
+                setPricechange(res.data[0].price_change_percentage_24h);
 
             }).catch(error => {
                 console.log(error);
@@ -19,7 +23,9 @@ const Coindata = () => {
     }, [])
 
     const dataHandler = (coin) => {
-        setData(coin);
+        setGraph(coin);
+        setPrice(coin.current_price);
+        setPricechange(coin.price_change_percentage_24h);
     }
 
     return (
@@ -63,17 +69,17 @@ const Coindata = () => {
                             <div className="graph-coin-detail" >
 
                                 <div className="coin-info">
-                                    <img src={data.image} className="coin-pic" alt="coin pic" />
+                                    <img src={graph.image} className="coin-pic" alt="coin pic" />
 
                                     <div className="coin-data">
-                                        <span className="coin-name">{data.name}</span>
-                                        <span>{data.symbol}</span>
+                                        <span className="coin-name">{graph.name}</span>
+                                        <span>{graph.symbol}</span>
                                     </div>
                                 </div>
 
                                 <div className="coin-current">
-                                    <span> &#x20B9; {data.current_price}</span>
-                                    <span className={data.price_change_percentage_24h > 0 ? "green" : "red"}> {data.price_change_percentage_24h > 0 ? `+${data.price_change_percentage_24h}` : data.price_change_percentage_24h}%</span>
+                                    <span> &#x20B9; {price.toLocaleString()}</span>
+                                    <span className={pricechange > 0 ? "green" : "red"}> {pricechange > 0 ? `+${pricechange.toFixed(2)}` : pricechange.toFixed(2)}</span>
                                 </div>
 
                             </div>
