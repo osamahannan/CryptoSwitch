@@ -15,19 +15,16 @@ const LineChart = (id) => {
             }).catch(error => {
                 console.log(error);
             })
-            // console.log(history);
-            // console.log(id.id);
-
     }, [id.id])
 
     return (
         <div className="chart">
             <Line
                 data={{
-                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+                    labels: ['16', '15', '14', '13', '12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'],
                     datasets: [
                         {
-                            label: '# of votes',
+                            label: 'price of coin',
                             data: [history[0], history[1], history[2], history[3], history[4], history[5], history[6], history[7], history[8], history[9], history[10], history[11], history[12], history[13], history[14], history[15]],
                             borderColor: 'rgb(75, 192, 192)'
                         }

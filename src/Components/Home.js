@@ -25,7 +25,6 @@ const Coindata = () => {
 
     const dataHandler = (coin) => {
         setId(coin.id);
-        // console.log(coin.id);
         setGraph(coin);
         setPrice(coin.current_price);
         setPricechange(coin.price_change_percentage_24h);
