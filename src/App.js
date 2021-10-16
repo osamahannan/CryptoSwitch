@@ -5,6 +5,13 @@ import Navbar from "./Components/Navbar";
 import Wallet from "./Components/Wallet";
 
 function App() {
+
+  const [Parent, setParent] = useState({});
+
+  const handleCallback = (childData) => {
+    setParent(childData);
+  }
+
   return (
 
     <Router>
@@ -12,7 +19,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home parentcallback = {handleCallback}/>
         </Route>
 
         <Route exact path="/wallet">
