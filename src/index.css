@@ -76,7 +76,7 @@ ul li a:hover {
   background-color: rgb(240, 243, 243);
 }
 
-.coin-detail {
+.coin-detail, .wallet-coin-detail{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,14 +93,14 @@ ul li a:hover {
   transform: scale(1.01,1.01);
 }
 
-.coin-info {
+.coin-info, .wallet-info {
   display: flex;
   align-items: center;
   width: 203px;
 }
 
 
-.coin-column {
+.coin-column, .wallet {
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -192,3 +192,42 @@ ul li a:hover {
   background-color: rgb(250 250 250);
 }
 
+/* Wallet page */
+
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(240, 243, 243);
+  height: 89.5vh;
+}
+
+.wallet-container {
+  display: flex;
+}
+
+.wallet {
+  align-items: center;
+}
+
+.wallet-coin-detail {
+  width: 80vw;
+}
+
+.wallet-edit {
+  display: flex;
+  border: 1px solid;
+  padding: 10px;
+}
+
+.dec-inc {
+  display: flex;
+  border: 1px solid red;
+  margin-right: 20px;
+}
+
+.delete {
+  display: flex;
+  border: 1px solid blue;
+  margin-left: 20px;
+}

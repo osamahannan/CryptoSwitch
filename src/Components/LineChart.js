@@ -7,11 +7,12 @@ const LineChart = (id) => {
     const [history, setHistory] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api.coingecko.com/api/v3/coins/${history ? id.id : "bitcoin"}/market_chart?vs_currency=INR&days=15&interval=daily`)
+        axios.get(`https://api.coingecko.com/api/v3/coins/${id.id}/market_chart?vs_currency=INR&days=15&interval=daily`)
             .then(res => {
-                setHistory(res.data.prices.filter(coindata => 
-                    coindata[1]
-                ))
+                // setHistory(res.data.prices.filter(coindata => 
+                //     coindata[1]
+                // ))
+                setHistory(res.data.prices);
             }).catch(error => {
                 console.log(error);
             })

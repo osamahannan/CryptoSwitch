@@ -81,7 +81,7 @@ const Coindata = () => {
 
                                 <div className="coin-current">
                                     <span> &#x20B9; {price.toLocaleString()}</span>
-                                    <span className={pricechange > 0 ? "green" : "red"}> {pricechange > 0 ? `+${pricechange.toFixed(2)}` : pricechange.toFixed(2)}</span>
+                                    <span className={pricechange > 0 ? "green" : "red"}> {pricechange > 0 ? `+${pricechange.toFixed(2)}` : pricechange.toFixed(2)}%</span>
                                 </div>
 
                             </div>
