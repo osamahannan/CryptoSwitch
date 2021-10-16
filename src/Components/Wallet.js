@@ -24,7 +24,7 @@ const Wallet = () => {
                         <div className="wallet-edit">
                             <div className="dec-inc">
                                 <i class="fas fa-plus"></i>
-                                <span>sd</span>
+                                <span>10</span>
                                 <i class="fas fa-minus"></i>
                             </div>
 

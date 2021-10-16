@@ -216,8 +216,7 @@ ul li a:hover {
 
 .wallet-edit {
   display: flex;
-  border: 1px solid;
-  padding: 10px;
+  padding: 5px;
 }
 
 .dec-inc {
@@ -229,26 +228,27 @@ ul li a:hover {
 }
 
 .dec-inc span {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   background: rgb(212 212 212);
-  padding: 0 5px;
+  height: 33px;
+  width: 33px;
   border-radius: 5px;
+  margin: auto;
 }
 
-.fa-plus {
+.fa-plus, .fa-minus {
   color: white;
   background: grey;
   padding: 5px;
-}
-
-.fa-minus {
-  color: white;
-  background: grey;
-  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
 }
 
 .delete {
   display: flex;
   margin-left: 20px;
   font-size: 20px;
-  padding: 5px;
+  padding: 6px 5px;
 }
