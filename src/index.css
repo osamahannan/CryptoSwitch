@@ -222,12 +222,33 @@ ul li a:hover {
 
 .dec-inc {
   display: flex;
-  border: 1px solid red;
+  justify-content: space-around;
+  align-items: center;
   margin-right: 20px;
+  width: 100px;
+}
+
+.dec-inc span {
+  background: rgb(212 212 212);
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.fa-plus {
+  color: white;
+  background: grey;
+  padding: 5px;
+}
+
+.fa-minus {
+  color: white;
+  background: grey;
+  padding: 5px;
 }
 
 .delete {
   display: flex;
-  border: 1px solid blue;
   margin-left: 20px;
+  font-size: 20px;
+  padding: 5px;
 }
