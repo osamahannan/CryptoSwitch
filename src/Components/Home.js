@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import LineChart from './LineChart';
 
-const Coindata = () => {
+const Coindata = (props) => {
 
     const [coins, setCoins] = useState([]);
     const [graph, setGraph] = useState({});
@@ -28,6 +28,10 @@ const Coindata = () => {
         setGraph(coin);
         setPrice(coin.current_price);
         setPricechange(coin.price_change_percentage_24h);
+    }
+
+    const handleWallet = (coin) => {
+        props.parentcallback(coin);
     }
 
     return (
@@ -58,7 +62,7 @@ const Coindata = () => {
                                     </div>
 
                                     <div className="wallet-button">
-                                        <button className="btn">Add to Wallet</button>
+                                        <button type="submit" className="btn" onClick={ () => handleWallet(coin)}>Add to Wallet</button>
                                     </div>
 
                                 </div>

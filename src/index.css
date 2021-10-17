@@ -32,7 +32,7 @@
   margin-right: 5px;
 }
 
-.coin {
+.crypto {
   color: white;
 }
 
@@ -246,9 +246,17 @@ ul li a:hover {
   border-radius: 3px;
 }
 
+.fa-plus, .fa-minus:hover {
+  cursor: pointer;
+}
+
 .delete {
   display: flex;
   margin-left: 20px;
   font-size: 20px;
   padding: 6px 5px;
+}
+
+.delete:hover {
+  cursor: pointer;
 }
