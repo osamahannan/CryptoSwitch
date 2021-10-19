@@ -9,9 +9,6 @@ const LineChart = (id) => {
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/${id.id}/market_chart?vs_currency=INR&days=15&interval=daily`)
             .then(res => {
-                // setHistory(res.data.prices.filter(coindata => 
-                //     coindata[1]
-                // ))
                 setHistory(res.data.prices);
             }).catch(error => {
                 console.log(error);

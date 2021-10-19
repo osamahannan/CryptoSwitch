@@ -1,18 +1,14 @@
 import React from 'react'
 
-const Wallet = (parent) => {
-
-    // const wallet = props.parent;
-
-    console.log(parent);
+const Wallet = ({ parent, coindata }) => {
 
     return (
         <div className="main-container">
             <div className="wallet-container">
                 <div className="wallet">
-                    {parent.parent.map(wallets => {
+                    {parent.map(wallets => {
                         return (
-                            <div className="wallet-coin-detail" key ={wallets.id}>
+                            <div className="wallet-coin-detail" key={wallets.id}>
 
                                 <div className="wallet-info">
                                     <img src={wallets.image} className="coin-pic" alt="coin pic" />
@@ -24,8 +20,8 @@ const Wallet = (parent) => {
                                 </div>
 
                                 <div className="coin-current">
-                                    <span> &#x20B9;251000</span>
-                                    <span>+2.25%</span>
+                                    <span> &#x20B9; {wallets.current_price.toLocaleString()}</span>
+                                    <span className={wallets.price_change_percentage_24h > 0 ? "green" : "red"}> {wallets.price_change_percentage_24h > 0 ? `+${wallets.price_change_percentage_24h.toFixed(2)}` : wallets.price_change_percentage_24h.toFixed(2)}%</span>
                                 </div>
 
                                 <div className="wallet-edit">

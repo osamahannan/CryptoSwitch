@@ -7,10 +7,11 @@ import Wallet from "./Components/Wallet";
 function App() {
 
   const [parent, setParent] = useState([]);
+  const [coindata, setCoindata] = useState({});
 
   const handleCallback = (childData) => {
+    setCoindata(childData);
     setParent([...parent, childData]);
-    // console.log(parent);
   }
 
   return (
@@ -25,7 +26,7 @@ function App() {
         </Route>
 
         <Route exact path="/wallet">
-          <Wallet parent = {parent}/>
+          <Wallet parent = {parent} coindata = {coindata }/>
         </Route>
 
       </Switch>
