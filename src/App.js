@@ -26,7 +26,7 @@ function App() {
         </Route>
 
         <Route exact path="/wallet">
-          <Wallet parent = {parent} coindata = {coindata }/>
+          <Wallet parent = {parent} coindata = {coindata}/>
         </Route>
 
       </Switch>
