@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Wallet = ({ filteredWallet, coindata }) => {
+const Wallet = ({ filteredWallet }) => {
 
     return (
         <div className="main-container">

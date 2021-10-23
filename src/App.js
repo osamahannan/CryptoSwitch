@@ -7,10 +7,8 @@ import Wallet from "./Components/Wallet";
 function App() {
 
   const [parent, setParent] = useState([]);
-  const [coindata, setCoindata] = useState({});
 
   const handleCallback = (childData) => {
-    setCoindata(childData);
     setParent([...parent, childData]);
   }
   
@@ -26,7 +24,7 @@ function App() {
       localStorage.setItem("wallet", JSON.stringify(filteredWallet));
     }
     saveLocalWallet();
-  }, [parent])
+  }, [filteredWallet])
 
 
   const getLocalWallet = () => {
@@ -46,12 +44,11 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          {/* <Home /> */}
           <Home parentcallback = {handleCallback}/>
         </Route>
 
         <Route exact path="/wallet">
-          <Wallet filteredWallet = {filteredWallet} coindata = {coindata}/>
+          <Wallet filteredWallet = {filteredWallet}/>
         </Route>
 
       </Switch>
