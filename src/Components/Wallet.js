@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Wallet = ({ filteredWallet }) => {
+const Wallet = ({ filteredWallet, parent, setParent }) => {
+
+    const deleteHandle = (wallets) => {
+        console.log(wallets);
+        setParent(parent.filter((el) => el.id !== wallets.id))
+    }
 
     return (
         <div className="main-container">
@@ -31,7 +36,7 @@ const Wallet = ({ filteredWallet }) => {
                                         <i className="fas fa-minus"></i>
                                     </div>
 
-                                    <div className="delete">
+                                    <div className="delete" onClick = {() => deleteHandle(wallets)}>
                                         <i className="fas fa-trash"></i>
                                     </div>
                                 </div>

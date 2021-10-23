@@ -24,7 +24,7 @@ function App() {
       localStorage.setItem("wallet", JSON.stringify(filteredWallet));
     }
     saveLocalWallet();
-  }, [filteredWallet])
+  }, [filteredWallet, parent])
 
 
   const getLocalWallet = () => {
@@ -48,7 +48,11 @@ function App() {
         </Route>
 
         <Route exact path="/wallet">
-          <Wallet filteredWallet = {filteredWallet}/>
+          <Wallet 
+            filteredWallet = {filteredWallet}
+            parent = {parent}
+            setParent = {setParent}
+          />
         </Route>
 
       </Switch>
