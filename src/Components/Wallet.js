@@ -1,14 +1,12 @@
 import React from 'react'
 
-const Wallet = ({ parent, coindata }) => {
-
-    const selectedList =  parent.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+const Wallet = ({ filteredWallet, coindata }) => {
 
     return (
         <div className="main-container">
             <div className="wallet-container">
                 <div className="wallet">
-                    {selectedList.map(wallets => {
+                    {filteredWallet.map(wallets => {
                         return (
                             <div className="wallet-coin-detail" key={wallets.id}>
 

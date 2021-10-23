@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
@@ -13,6 +13,31 @@ function App() {
     setCoindata(childData);
     setParent([...parent, childData]);
   }
+  
+  
+  const filteredWallet = parent.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+  
+  useEffect(() => {
+    getLocalWallet();
+  }, [])
+
+  useEffect(() => {
+    const saveLocalWallet = () => {
+      localStorage.setItem("wallet", JSON.stringify(filteredWallet));
+    }
+    saveLocalWallet();
+  }, [parent])
+
+
+  const getLocalWallet = () => {
+    if(localStorage.getItem("wallet") == null) {
+      localStorage.setItem("wallet", JSON.stringify([]));
+    }
+    else {
+      let localWallet = JSON.parse(localStorage.getItem("wallet"));
+      setParent(localWallet);
+    }
+  }
 
   return (
 
@@ -26,7 +51,7 @@ function App() {
         </Route>
 
         <Route exact path="/wallet">
-          <Wallet parent = {parent} coindata = {coindata}/>
+          <Wallet filteredWallet = {filteredWallet} coindata = {coindata}/>
         </Route>
 
       </Switch>
