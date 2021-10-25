@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import LineChart from './LineChart';
 
-const Coindata = (props) => {
+const Coindata = ({parentcallback}) => {
 
     const [coins, setCoins] = useState([]);
     const [graph, setGraph] = useState({});
@@ -31,7 +31,7 @@ const Coindata = (props) => {
     }
 
     const handleWallet = (coin) => {
-        props.parentcallback(coin);
+        parentcallback(coin);
     }
 
     return (

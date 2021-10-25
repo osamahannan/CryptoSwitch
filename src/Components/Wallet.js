@@ -2,8 +2,17 @@ import React from 'react'
 
 const Wallet = ({ filteredWallet, parent, setParent }) => {
 
+    const increaseHandle = (wallets) => {
+        const localvolume = wallets.coinvolume
+        setParent(parent.map((el) => (el.id === wallets.id) ? {...el, coinvolume: localvolume+1} : el))
+    }
+
+    const decreaseHandle = (wallets) => {
+        const localvolume = wallets.coinvolume
+        setParent(parent.map((el) => (el.id === wallets.id) ? {...el, coinvolume: localvolume-1} : el))
+    }
+
     const deleteHandle = (wallets) => {
-        console.log(wallets);
         setParent(parent.filter((el) => el.id !== wallets.id))
     }
 
@@ -31,9 +40,9 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
 
                                 <div className="wallet-edit">
                                     <div className="dec-inc">
-                                        <i className="fas fa-plus"></i>
-                                        <span>10</span>
-                                        <i className="fas fa-minus"></i>
+                                        <i className="fas fa-plus" onClick = {()=>increaseHandle(wallets)}></i>
+                                        <span>{wallets.coinvolume}</span>
+                                        <i className="fas fa-minus" onClick = {()=>decreaseHandle(wallets)}></i>
                                     </div>
 
                                     <div className="delete" onClick = {() => deleteHandle(wallets)}>

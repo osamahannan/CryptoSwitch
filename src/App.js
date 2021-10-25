@@ -9,9 +9,8 @@ function App() {
   const [parent, setParent] = useState([]);
 
   const handleCallback = (childData) => {
-    setParent([...parent, childData]);
+    setParent([...parent, {...childData, coinvolume: 1}]);
   }
-  
   
   const filteredWallet = parent.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
   
