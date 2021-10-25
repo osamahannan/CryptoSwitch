@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
@@ -9,11 +9,11 @@ function App() {
   const [parent, setParent] = useState([]);
 
   const handleCallback = (childData) => {
-    setParent([...parent, {...childData, coinvolume: 1}]);
+    setParent([...parent, { ...childData, coinvolume: 1 }]);
   }
-  
-  const filteredWallet = parent.filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
-  
+
+  const filteredWallet = parent.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
+
   useEffect(() => {
     getLocalWallet();
   }, [])
@@ -27,7 +27,7 @@ function App() {
 
 
   const getLocalWallet = () => {
-    if(localStorage.getItem("wallet") == null) {
+    if (localStorage.getItem("wallet") == null) {
       localStorage.setItem("wallet", JSON.stringify([]));
     }
     else {
@@ -38,25 +38,29 @@ function App() {
 
   return (
 
-    <Router>
-      <Navbar />
+      <Router>
+        <Navbar />
 
-      <Switch>
-        <Route exact path="/">
-          <Home parentcallback = {handleCallback}/>
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Home 
+              parentcallback={handleCallback}
+              parent = {parent}
+              filteredWallet={filteredWallet}
+            />
+          </Route>
 
-        <Route exact path="/wallet">
-          <Wallet 
-            filteredWallet = {filteredWallet}
-            parent = {parent}
-            setParent = {setParent}
-          />
-        </Route>
+          <Route exact path="/wallet">
+            <Wallet
+              filteredWallet={filteredWallet}
+              parent={parent}
+              setParent={setParent}
+            />
+          </Route>
 
-      </Switch>
+        </Switch>
 
-    </Router>
+      </Router>
   );
 }
 

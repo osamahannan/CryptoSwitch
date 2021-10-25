@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import LineChart from './LineChart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Coindata = ({parentcallback}) => {
+const Coindata = ({parentcallback, parent, filteredWallet}) => {
 
     const [coins, setCoins] = useState([]);
     const [graph, setGraph] = useState({});
@@ -31,6 +33,24 @@ const Coindata = ({parentcallback}) => {
     }
 
     const handleWallet = (coin) => {
+        let i =0;
+        filteredWallet.forEach((el) => {
+            if (el.id === coin.id) {
+              toast.warn("Coin already present in the Wallet", {
+                position: "top-center",
+                autoClose: 2500
+              })
+              i++;
+            }
+        })
+
+        if(i===0) {
+            toast.success("Coin added successfully", {
+                position: "top-center",
+                autoClose: 2000
+            })
+        }
+
         parentcallback(coin);
     }
 
@@ -97,6 +117,9 @@ const Coindata = ({parentcallback}) => {
                 </div>
 
             </div>
+
+            <ToastContainer />
+
         </>
 
     )
