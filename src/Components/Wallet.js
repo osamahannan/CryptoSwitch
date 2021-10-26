@@ -1,6 +1,7 @@
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from 'react-router-dom';
 
 const Wallet = ({ filteredWallet, parent, setParent }) => {
 
@@ -63,7 +64,13 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
 
                                 </div>
                             )
-                        })) : <h1 className= "empty" >Oops! your wallet is empty</h1> }
+                        })) : 
+                        (   
+                            <div className= "empty">
+                                <h1>Oops! your wallet is empty</h1>
+                                <button><Link to= "/" className= "back-button">Add Coin</Link></button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -215,6 +215,7 @@ ul li a:hover {
 }
 
 .wallet {
+  overflow: unset;
   align-items: center;
 }
 
@@ -270,5 +271,36 @@ ul li a:hover {
 }
 
 .empty {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+
+.empty h1 {
+  color: rgb(44 44 84);
+}
+
+.empty button {
+  display: flex;
+  border: none;
+  background: none;
+  justify-content: center;
+}
+
+.back-button {
+  text-decoration: none;
+  background-color: rgb(43, 128, 238);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  color: white;
+  border: none;
+  margin: 5px;
+}
+
+.back-button:hover {
+  background: none;
+  border: 2px solid rgb(43, 128, 238);
   color: rgb(43, 128, 238);
+  transition: 0.1 all ease;
 }
