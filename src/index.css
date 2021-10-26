@@ -204,6 +204,14 @@ ul li a:hover {
 
 .wallet-container {
   display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  width: 84vw;
+}
+
+.wallet-name {
+  display: flex;
+  margin: 0 10px;
 }
 
 .wallet {
@@ -259,4 +267,8 @@ ul li a:hover {
 
 .delete:hover {
   cursor: pointer;
+}
+
+.empty {
+  color: rgb(43, 128, 238);
 }

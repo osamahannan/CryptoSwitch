@@ -25,6 +25,11 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
         <>
             <div className="main-container">
                 <div className="wallet-container">
+
+                    <div className="wallet-name">
+                        <h2>Your Wallet</h2>
+                    </div>
+
                     <div className="wallet">
                         { filteredWallet.length > 0 ? (filteredWallet.map(wallet => {
                             return (
@@ -58,7 +63,7 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
 
                                 </div>
                             )
-                        })) : <h1>Oops! your wallet is empty</h1> }
+                        })) : <h1 className= "empty" >Oops! your wallet is empty</h1> }
                     </div>
                 </div>
             </div>
