@@ -34,7 +34,6 @@ const LineChart = ({id}) => {
                     maintainAspectRatio: false,
                     scales: {
                         yAxes: {
-                            beginAtZero: true,
                             grid: {
                                 display: false,
                                 borderColor: 'rgb(250 250 250)'
