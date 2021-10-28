@@ -40,7 +40,8 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
     }
     
 
-    const handleWallet = (coin) => {
+    const handleWallet = (coin, e) => {
+        e.preventDefault();
         let i = 0;
         filteredWallet.forEach((el) => {
             if (el.id === coin.id) {
@@ -83,8 +84,8 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                 </div>
 
                 {isMobile ? <div className="wallet-button">
-                    <button type="submit" className="btn" onClick={() => handleWallet(coin)}>Add to Wallet</button>
-                </div> : <img src ={walletpic} className = "wallet-pic" alt= "wallet pic" />}
+                    <button type="submit" className="btn" onClick={(e) => handleWallet(coin,e)}>Add to Wallet</button>
+                </div> : <img src ={walletpic} className = "wallet-pic" alt= "wallet pic" onClick ={(e) => handleWallet(coin,e)}/>}
 
 
             </div>
