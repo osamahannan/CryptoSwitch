@@ -128,6 +128,7 @@ ul li a:hover {
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+  width: 86px;
 }
 
 .green {
@@ -303,4 +304,131 @@ ul li a:hover {
   border: 2px solid rgb(43, 128, 238);
   color: rgb(43, 128, 238);
   transition: 0.1 all ease;
+}
+
+.chart-link {
+  text-decoration: none;
+  color: unset;
+}
+
+.wallet-pic {
+  height: 40px;
+}
+
+@media only screen and (max-width: 1100px) {
+
+  .coin-column {
+    width: 100%;
+    align-items: center;
+  }
+
+  .coin-detail {
+    width: 85vw;
+  }
+
+  .graph-container {
+    height: 87.5vh;
+    width: 95vw;
+    margin: auto;
+  }
+
+  .graph-coin {
+    width: 75vw;
+  }
+
+  .chart {
+    height: 67vh;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .graph-container {
+    width: 90vw;
+  }
+
+  .graph-coin {
+    width: 85vw;
+  }
+
+  .chart {
+    height: 60vh;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .nav-bar {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .coin-pic {
+    height: 30px;
+    margin: 0;
+  }
+
+  .btn {
+    font-size: 13px;
+    width: 95px;
+  }
+
+  .coin-info {
+    width: 193px;
+  }
+
+  .chart {
+    height: 45vh;
+  }
+
+  .graph-container {
+    justify-content: unset;
+    margin-top: 40px;
+    height: 78.5vh;
+  }
+
+  .graph-coin {
+    width: 95vw;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+  .nav-bar ul {
+    margin: 0;
+  }
+
+  .nav-bar ul li a {
+    font-size: 17px;
+  }
+
+  .nav-bar ul li {
+    margin: 5px 5px;
+  }
+
+  .coin-detail {
+    justify-content: space-between;
+  }
+
+  .coin-data {
+    margin-left: 5px;
+  }
+
+  .btn {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+  .wallet-pic {
+    height: 35px;
+  }
+
 }

@@ -3,8 +3,11 @@ import axios from "axios";
 import LineChart from './LineChart';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useMediaQuery } from 'react-responsive'
+import { Link } from "react-router-dom";
+import walletpic from '../Assets/wallet.png';
 
-const Coindata = ({parentcallback, parent, filteredWallet}) => {
+const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
 
     const [coins, setCoins] = useState([]);
     const [graph, setGraph] = useState({});
@@ -25,26 +28,31 @@ const Coindata = ({parentcallback, parent, filteredWallet}) => {
             })
     }, [])
 
+    const isTabletOrMobile = useMediaQuery({ query: '(min-width: 1100px)' })
+    const isMobile = useMediaQuery({ query: '(min-width: 450px)' })
+
     const dataHandler = (coin) => {
         setId(coin.id);
         setGraph(coin);
         setPrice(coin.current_price);
         setPricechange(coin.price_change_percentage_24h);
+        graphCallback(coin,coin.current_price,coin.price_change_percentage_24h,coin.id);
     }
+    
 
     const handleWallet = (coin) => {
-        let i =0;
+        let i = 0;
         filteredWallet.forEach((el) => {
             if (el.id === coin.id) {
-              toast.warn("Coin already present in the Wallet", {
-                position: "top-center",
-                autoClose: 2500
-              })
-              i++;
+                toast.warn("Coin already present in the Wallet", {
+                    position: "top-center",
+                    autoClose: 2500
+                })
+                i++;
             }
         })
 
-        if(i===0) {
+        if (i === 0) {
             toast.success("Coin added successfully", {
                 position: "top-center",
                 autoClose: 2000
@@ -52,6 +60,35 @@ const Coindata = ({parentcallback, parent, filteredWallet}) => {
         }
 
         parentcallback(coin);
+    }
+
+    const TrendingCoins = ({coin}) => {
+
+        return (
+
+            <div className="coin-detail" key ={coin.id} onClick={() => dataHandler(coin)}>
+
+                <div className="coin-info">
+                    <img src={coin.image} className="coin-pic" alt="coin pic" />
+
+                    <div className="coin-data">
+                        <span className="coin-name">{coin.name}</span>
+                        <span>{coin.symbol}</span>
+                    </div>
+                </div>
+
+                <div className="coin-current">
+                    <span> &#x20B9; {coin.current_price.toLocaleString()}</span>
+                    <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h.toFixed(2)}` : coin.price_change_percentage_24h.toFixed(2)}%</span>
+                </div>
+
+                {isMobile ? <div className="wallet-button">
+                    <button type="submit" className="btn" onClick={() => handleWallet(coin)}>Add to Wallet</button>
+                </div> : <img src ={walletpic} className = "wallet-pic" alt= "wallet pic" />}
+
+
+            </div>
+        )
     }
 
     return (
@@ -64,56 +101,30 @@ const Coindata = ({parentcallback, parent, filteredWallet}) => {
                     <div className="coin-column">
 
                         {coins.map(coin => {
+                            // console.log(coin.id)
                             return (
-                                <div className="coin-detail" key={coin.id} onClick={() => dataHandler(coin)}>
+                                <>
+                                    { !isTabletOrMobile ? 
+                                                                       
+                                    (<Link to="/LineChart" className="chart-link" key ={coin.id}>
+                                        <TrendingCoins coin={coin}/>
 
-                                    <div className="coin-info">
-                                        <img src={coin.image} className="coin-pic" alt="coin pic" />
+                                    </Link>) : <TrendingCoins coin={coin}/> }
 
-                                        <div className="coin-data">
-                                            <span className="coin-name">{coin.name}</span>
-                                            <span>{coin.symbol}</span>
-                                        </div>
-                                    </div>
 
-                                    <div className="coin-current">
-                                        <span> &#x20B9; {coin.current_price.toLocaleString()}</span>
-                                        <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h.toFixed(2)}` : coin.price_change_percentage_24h.toFixed(2)}%</span>
-                                    </div>
+                                </> 
 
-                                    <div className="wallet-button">
-                                        <button type="submit" className="btn" onClick={ () => handleWallet(coin)}>Add to Wallet</button>
-                                    </div>
-
-                                </div>
                             )
                         })}
                     </div>
-
-                    <div className="graph-container">
-                        <div className="graph-coin">
-                            <div className="graph-coin-detail" >
-
-                                <div className="coin-info">
-                                    <img src={graph.image} className="coin-pic" alt="coin pic" />
-
-                                    <div className="coin-data">
-                                        <span className="coin-name">{graph.name}</span>
-                                        <span>{graph.symbol}</span>
-                                    </div>
-                                </div>
-
-                                <div className="coin-current">
-                                    <span> &#x20B9; {price.toLocaleString()}</span>
-                                    <span className={pricechange > 0 ? "green" : "red"}> {pricechange > 0 ? `+${pricechange.toFixed(2)}` : pricechange.toFixed(2)}%</span>
-                                </div>
-
-                            </div>
-
-                            <LineChart id={id} />
-                        </div>
-                    </div>
-
+                    
+                    {isTabletOrMobile ? <LineChart 
+                        id = {id}
+                        graph = {graph}
+                        price = {price}
+                        pricechange = {pricechange}
+                    /> : ""}
+                    
                 </div>
 
             </div>

@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./Components/Home";
+import LineChart from "./Components/LineChart";
 import Navbar from "./Components/Navbar";
 import Wallet from "./Components/Wallet";
 
 function App() {
 
   const [parent, setParent] = useState([]);
+  const [graph, setGraph] = useState({});
+  const [price, setPrice] = useState(0);
+  const [pricechange, setPricechange] = useState(0);
+  const [id, setId] = useState("bitcoin");
 
   const handleCallback = (childData) => {
     setParent([...parent, { ...childData, coinvolume: 1 }]);
+  }
+
+  const graphCallback = (graph, price, pricechange, id) => {
+    setGraph(graph);
+    setPrice(price);
+    setPricechange(pricechange);
+    setId(id);
   }
 
   const filteredWallet = parent.filter((v, i, a) => a.findIndex(t => (t.id === v.id)) === i)
@@ -38,29 +50,46 @@ function App() {
 
   return (
 
-      <Router>
-        <Navbar />
+    <Router>
+      <Navbar />
 
-        <Switch>
-          <Route exact path="/">
-            <Home 
-              parentcallback={handleCallback}
-              parent = {parent}
-              filteredWallet={filteredWallet}
-            />
-          </Route>
+      <Switch>
+        <Route exact path="/">
+          <Home
+            parentcallback={handleCallback}
+            filteredWallet={filteredWallet}
+            graphCallback = {graphCallback}
+            id = {id}
+            setId = {setId}
+            graph = {graph}
+            setGraph = {setGraph}
+            price = {price}
+            setPrice = {setPrice}
+            pricechange = {pricechange}
+            setPricechange = {setPricechange}
+          />
+        </Route>
 
-          <Route exact path="/wallet">
-            <Wallet
-              filteredWallet={filteredWallet}
-              parent={parent}
-              setParent={setParent}
-            />
-          </Route>
+        <Route exact path="/wallet">
+          <Wallet
+            filteredWallet={filteredWallet}
+            parent={parent}
+            setParent={setParent}
+          />
+        </Route>
 
-        </Switch>
+        <Route exact path="/LineChart">
+          <LineChart 
+            id = {id}
+            graph = {graph}
+            price = {price}
+            pricechange = {pricechange}
+          />
+        </Route>
 
-      </Router>
+      </Switch>
+
+    </Router>
   );
 }
 
