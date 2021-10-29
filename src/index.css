@@ -447,10 +447,18 @@ ul li a:hover {
 
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 380px) {
 
   .wallet-pic {
     height: 30px;
+  }
+
+  .coin-info {
+    margin-left: -10px;
+  }
+
+  .wallet-pic {
+    margin-right: -10px;
   }
 
   .coin-current {
