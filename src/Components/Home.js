@@ -28,7 +28,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
             })
     }, [])
 
-    const isTabletOrMobile = useMediaQuery({ query: '(min-width: 1100px)' })
+    const isTablet = useMediaQuery({ query: '(min-width: 1100px)' })
     const isMobile = useMediaQuery({ query: '(min-width: 450px)' })
 
     const dataHandler = (coin) => {
@@ -105,13 +105,12 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                             // console.log(coin.id)
                             return (
                                 <>
-                                    { !isTabletOrMobile ? 
+                                    { !isTablet ? 
                                                                        
                                     (<Link to="/LineChart" className="chart-link" key ={coin.id}>
-                                        <TrendingCoins coin={coin}/>
+                                        <TrendingCoins coin={coin}/></Link>) :
 
-                                    </Link>) : <TrendingCoins coin={coin}/> }
-
+                                     <TrendingCoins coin={coin}/> }
 
                                 </> 
 
@@ -119,7 +118,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                         })}
                     </div>
                     
-                    {isTabletOrMobile ? <LineChart 
+                    {isTablet ? <LineChart 
                         id = {id}
                         graph = {graph}
                         price = {price}

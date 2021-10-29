@@ -1,7 +1,7 @@
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Wallet = ({ filteredWallet, parent, setParent }) => {
 
@@ -32,22 +32,25 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
                     </div>
 
                     <div className="wallet">
-                        { filteredWallet.length > 0 ? (filteredWallet.map(wallet => {
+                        {filteredWallet.length > 0 ? (filteredWallet.map(wallet => {
                             return (
                                 <div className="wallet-coin-detail" key={wallet.id}>
 
-                                    <div className="wallet-info">
-                                        <img src={wallet.image} className="coin-pic" alt="coin pic" />
+                                    <div className="wallet-coin-container">
 
-                                        <div className="coin-data">
-                                            <span className="coin-name">{wallet.name}</span>
-                                            <span>{wallet.symbol}</span>
+                                        <div className="wallet-info">
+                                            <img src={wallet.image} className="coin-pic" alt="coin pic" />
+
+                                            <div className="coin-data">
+                                                <span className="coin-name">{wallet.name}</span>
+                                                <span>{wallet.symbol}</span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="coin-current">
-                                        <span> &#x20B9; {wallet.current_price.toLocaleString()}</span>
-                                        <span className={wallet.price_change_percentage_24h > 0 ? "green" : "red"}> {wallet.price_change_percentage_24h > 0 ? `+${wallet.price_change_percentage_24h.toFixed(2)}` : wallet.price_change_percentage_24h.toFixed(2)}%</span>
+                                        <div className="wallet-current">
+                                            <span> &#x20B9; {wallet.current_price.toLocaleString()}</span>
+                                            <span className={wallet.price_change_percentage_24h > 0 ? "green" : "red"}> {wallet.price_change_percentage_24h > 0 ? `+${wallet.price_change_percentage_24h.toFixed(2)}` : wallet.price_change_percentage_24h.toFixed(2)}%</span>
+                                        </div>
                                     </div>
 
                                     <div className="wallet-edit">
@@ -64,13 +67,13 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
 
                                 </div>
                             )
-                        })) : 
-                        (   
-                            <div className= "empty">
-                                <h1>Oops! your wallet is empty</h1>
-                                <button><Link to= "/" className= "back-button">Add Coin</Link></button>
-                            </div>
-                        )}
+                        })) :
+                            (
+                                <div className="empty">
+                                    <h1>Oops! your wallet is empty</h1>
+                                    <button><Link to="/" className="back-button">Add Coin</Link></button>
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>
