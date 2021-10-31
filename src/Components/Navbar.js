@@ -8,8 +8,8 @@ const Navbar = () => {
                 <h2><span className="crypto">Crypto</span><span className="switch">Switch</span></h2>
             </div>
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/wallet">Wallet</Link></li>
+                <li><Link to="/" className ="noSelect">Home</Link></li>
+                <li><Link to="/wallet" className ="noSelect">Wallet</Link></li>
             </ul>
         </div>
     )

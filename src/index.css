@@ -201,6 +201,7 @@ ul li a:hover {
   justify-content: center;
   background-color: rgb(240, 243, 243);
   height: 100%;
+  border-radius: 0 0 25px 25px;
 }
 
 .wallet-container {
