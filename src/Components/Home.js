@@ -67,7 +67,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
 
         return (
 
-            <div className="coin-detail" key ={coin.id} onClick={() => dataHandler(coin)}>
+            <div className="coin-detail noSelect" key ={coin.id} onClick={() => dataHandler(coin)}>
 
                 <div className="coin-info">
                     <img src={coin.image} className="coin-pic" alt="coin pic" />
@@ -84,8 +84,8 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                 </div>
 
                 {isMobile ? <div className="wallet-button">
-                    <button type="submit" className="btn" onClick={(e) => handleWallet(coin,e)}>Add to Wallet</button>
-                </div> : <img src ={walletpic} className = "wallet-pic" alt= "wallet pic" onClick ={(e) => handleWallet(coin,e)}/>}
+                    <button type="submit" className="btn noSelect" onClick={(e) => handleWallet(coin,e)}>Add to Wallet</button>
+                </div> : <img src ={walletpic} className = "wallet-pic noSelect" alt= "wallet pic" onClick ={(e) => handleWallet(coin,e)}/>}
 
 
             </div>
@@ -107,7 +107,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                                 <>
                                     { !isTablet ? 
                                                                        
-                                    (<Link to="/LineChart" className="chart-link" key ={coin.id}>
+                                    (<Link to="/LineChart" className="chart-link noSelect" key ={coin.id}>
                                         <TrendingCoins coin={coin}/></Link>) :
 
                                      <TrendingCoins coin={coin}/> }
