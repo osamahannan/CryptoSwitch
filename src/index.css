@@ -436,6 +436,10 @@ ul li a:hover {
 
 @media only screen and (max-width: 450px) {
 
+  .logo {
+    margin: 0;
+  }
+
   .nav-bar ul {
     margin: 0;
   }
