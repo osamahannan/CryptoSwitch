@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
-const Wallet = ({ filteredWallet, parent, setParent }) => {
+const Wallet = ({ filteredWallet, parent, setParent, setShowLink }) => {
 
     const increaseHandle = (wallet) => {
         setParent(parent.map((el) => (el.id === wallet.id && wallet.coinvolume > 0) ? { ...el, coinvolume: wallet.coinvolume + 1 } : el))
@@ -55,9 +55,9 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
 
                                     <div className="wallet-edit">
                                         <div className="dec-inc">
-                                            <i className="fas fa-plus" onClick={() => increaseHandle(wallet)}></i>
-                                            <span>{wallet.coinvolume}</span>
                                             <i className="fas fa-minus" onClick={() => decreaseHandle(wallet)}></i>
+                                            <span>{wallet.coinvolume}</span>
+                                            <i className="fas fa-plus" onClick={() => increaseHandle(wallet)}></i>
                                         </div>
 
                                         <div className="delete" onClick={() => deleteHandle(wallet)}>
@@ -71,7 +71,7 @@ const Wallet = ({ filteredWallet, parent, setParent }) => {
                             (
                                 <div className="empty">
                                     <h1>Oops! your wallet is empty</h1>
-                                    <button><Link to="/" className="back-button">Add Coin</Link></button>
+                                    <button><Link to="/" className="back-button" onClick={()=>setShowLink(1)}>Add Coin</Link></button>
                                 </div>
                             )}
                     </div>

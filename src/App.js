@@ -12,6 +12,7 @@ function App() {
   const [price, setPrice] = useState(0);
   const [pricechange, setPricechange] = useState(0);
   const [id, setId] = useState("bitcoin");
+  const [showLink, setShowLink] = useState(1);
 
   const handleCallback = (childData) => {
     setParent([...parent, { ...childData, coinvolume: 1 }]);
@@ -51,7 +52,7 @@ function App() {
   return (
 
     <Router>
-      <Navbar />
+      <Navbar showLink = {showLink} setShowLink = {setShowLink} />
 
       <Switch>
         <Route exact path="/">
@@ -75,6 +76,7 @@ function App() {
             filteredWallet={filteredWallet}
             parent={parent}
             setParent={setParent}
+            setShowLink = {setShowLink}
           />
         </Route>
 

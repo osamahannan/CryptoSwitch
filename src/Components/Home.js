@@ -7,13 +7,9 @@ import { useMediaQuery } from 'react-responsive'
 import { Link } from "react-router-dom";
 import walletpic from '../Assets/wallet.png';
 
-const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
+const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGraph, price, setPrice, pricechange, setPricechange, id, setId }) => {
 
     const [coins, setCoins] = useState([]);
-    const [graph, setGraph] = useState({});
-    const [price, setPrice] = useState(0);
-    const [pricechange, setPricechange] = useState(0);
-    const [id, setId] = useState("bitcoin");
 
     useEffect(() => {
         axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false")
@@ -26,7 +22,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
             }).catch(error => {
                 console.log(error);
             })
-    }, [])
+    }, [setGraph, setPrice, setPricechange])
 
     const isTablet = useMediaQuery({ query: '(min-width: 1100px)' })
     const isMobile = useMediaQuery({ query: '(min-width: 450px)' })
@@ -36,9 +32,9 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
         setGraph(coin);
         setPrice(coin.current_price);
         setPricechange(coin.price_change_percentage_24h);
-        graphCallback(coin,coin.current_price,coin.price_change_percentage_24h,coin.id);
+        graphCallback(coin, coin.current_price, coin.price_change_percentage_24h, coin.id);
     }
-    
+
 
     const handleWallet = (coin, e) => {
         e.preventDefault();
@@ -63,11 +59,11 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
         parentcallback(coin);
     }
 
-    const TrendingCoins = ({coin}) => {
+    const TrendingCoins = ({ coin }) => {
 
         return (
 
-            <div className="coin-detail noSelect" key ={coin.id} onClick={() => dataHandler(coin)}>
+            <div className="coin-detail noSelect" key={coin.id} onClick={() => dataHandler(coin)}>
 
                 <div className="coin-info">
                     <img src={coin.image} className="coin-pic" alt="coin pic" />
@@ -84,8 +80,8 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                 </div>
 
                 {isMobile ? <div className="wallet-button">
-                    <button type="submit" className="btn noSelect" onClick={(e) => handleWallet(coin,e)}>Add to Wallet</button>
-                </div> : <img src ={walletpic} className = "wallet-pic noSelect" alt= "wallet pic" onClick ={(e) => handleWallet(coin,e)}/>}
+                    <button type="submit" className="btn noSelect" onClick={(e) => handleWallet(coin, e)}>Add to Wallet</button>
+                </div> : <img src={walletpic} className="wallet-pic noSelect" alt="wallet pic" onClick={(e) => handleWallet(coin, e)} />}
 
 
             </div>
@@ -102,29 +98,28 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback}) => {
                     <div className="coin-column">
 
                         {coins.map(coin => {
-                            // console.log(coin.id)
                             return (
                                 <>
-                                    { !isTablet ? 
-                                                                       
-                                    (<Link to="/LineChart" className="chart-link noSelect" key ={coin.id}>
-                                        <TrendingCoins coin={coin}/></Link>) :
+                                    {!isTablet ?
 
-                                     <TrendingCoins coin={coin}/> }
+                                        (<Link to="/LineChart" className="chart-link noSelect" key={coin.id}>
+                                            <TrendingCoins coin={coin} /></Link>) :
 
-                                </> 
+                                        <TrendingCoins coin={coin} />}
+
+                                </>
 
                             )
                         })}
                     </div>
-                    
-                    {isTablet ? <LineChart 
-                        id = {id}
-                        graph = {graph}
-                        price = {price}
-                        pricechange = {pricechange}
+
+                    {isTablet ? <LineChart
+                        id={id}
+                        graph={graph}
+                        price={price}
+                        pricechange={pricechange}
                     /> : ""}
-                    
+
                 </div>
 
             </div>

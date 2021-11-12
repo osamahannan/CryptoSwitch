@@ -298,20 +298,19 @@ ul li a:hover {
 
 .back-button {
   text-decoration: none;
-  background-color: rgb(43, 128, 238);
-  padding: 5px 15px;
-  border-radius: 20px;
+  border: 2px solid rgb(43, 128, 238);
+  padding: 0 10px;
+  border-radius: 24px;
   font-size: 1.1rem;
-  color: white;
-  border: none;
+  color: rgb(43, 128, 238);
   margin: 5px;
 }
 
 .back-button:hover {
   background: none;
-  border: 2px solid rgb(43, 128, 238);
-  color: rgb(43, 128, 238);
-  transition: 0.1 all ease;
+  background-color: rgb(43, 128, 238);
+  color: white;
+  transition: 0.3s all ease;
 }
 
 .chart-link {
@@ -336,6 +335,10 @@ ul li a:hover {
 .noSelect:focus {
   outline: none !important;
 }
+
+.noSelect.active-link {
+  color: rgb(43, 128, 238);
+} 
 
 @media only screen and (max-width: 1100px) {
 
