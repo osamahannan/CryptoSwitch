@@ -22,6 +22,10 @@
   margin-left: 20px;
 }
 
+.logo a {
+  text-decoration: none;
+}
+
 .logo h2 {
   margin-top: 3px;
 }
@@ -29,7 +33,7 @@
 .nav-bar img {
   height: 35px;
   border-radius: 32px;
-  margin-right: 5px;
+  margin: 10px 7px 0 0;
 }
 
 .crypto {
@@ -82,7 +86,7 @@ ul li a:hover {
   align-items: center;
   border-radius: 5px;
   padding: 10px 20px;
-  margin: 10px;
+  margin: 5px;
   width: 45vw;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -473,10 +477,6 @@ ul li a:hover {
 
   .wallet-pic {
     height: 30px;
-  }
-
-  .coin-info {
-    margin-left: -10px;
   }
 
   .wallet-pic {

@@ -7,8 +7,8 @@ const Navbar = ({showLink, setShowLink}) => {
     return (
         <div className="nav-bar">
             <div className="logo">
-                <img src={logopic} className="logo-pic" alt="logo pic" />
-                <h2><span className="crypto">Crypto</span><span className="switch">Switch</span></h2>
+                <Link to="/" onClick={()=> setShowLink(1)} className={(showLink === 1) ? "noSelect active-link" : "noSelect"}><img src={logopic} className="logo-pic" alt="logo pic" /></Link>
+                <Link to="/" onClick={()=> setShowLink(1)} className={(showLink === 1) ? "noSelect active-link" : "noSelect"}><h2><span className="crypto">Crypto</span><span className="switch">Switch</span></h2></Link>
             </div>
             <ul>
                 <li><Link to="/" onClick={()=> setShowLink(1)}  className={(showLink === 1) ? "noSelect active-link" : "noSelect"} >Home</Link></li>
