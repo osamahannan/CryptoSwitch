@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap");
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Baloo Bhai 2', cursive;
+  font-family: "Baloo Bhai 2", cursive;
 }
 
-.nav-bar{
+.nav-bar {
   display: flex;
   padding: 10px;
   justify-content: space-between;
@@ -46,7 +46,7 @@
 
 .nav-bar ul {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   margin-right: 20px;
 }
@@ -80,7 +80,8 @@ ul li a:hover {
   background-color: rgb(240, 243, 243);
 }
 
-.coin-detail, .wallet-coin-detail{
+.coin-detail,
+.wallet-coin-detail {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,17 +95,18 @@ ul li a:hover {
 }
 
 .coin-detail:hover {
-  transform: scale(1.01,1.01);
+  transform: scale(1.01, 1.01);
 }
 
-.coin-info, .wallet-info {
+.coin-info,
+.wallet-info {
   display: flex;
   align-items: center;
   width: 203px;
 }
 
-
-.coin-column, .wallet {
+.coin-column,
+.wallet {
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -113,7 +115,7 @@ ul li a:hover {
 .coin-data {
   display: flex;
   flex-direction: column;
-  margin-left: 15px;  
+  margin-left: 15px;
   padding: 0 5px;
 }
 
@@ -126,7 +128,8 @@ ul li a:hover {
   font-weight: bold;
 }
 
-.coin-current, .wallet-current {
+.coin-current,
+.wallet-current {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +171,6 @@ ul li a:hover {
   width: 46vw;
 }
 
-
 .graph-coin {
   display: flex;
   flex-direction: column;
@@ -199,13 +201,11 @@ ul li a:hover {
 
 /* Wallet page */
 
-
 .main-container {
   display: flex;
   justify-content: center;
   background-color: rgb(240, 243, 243);
-  height: 100%;
-  border-radius: 0 0 25px 25px;
+  height: calc(97vh - 52px);
 }
 
 .wallet-container {
@@ -260,7 +260,8 @@ ul li a:hover {
   margin: auto;
 }
 
-.fa-plus, .fa-minus {
+.fa-plus,
+.fa-minus {
   color: white;
   background: grey;
   padding: 5px;
@@ -268,7 +269,8 @@ ul li a:hover {
   border-radius: 3px;
 }
 
-.fa-plus, .fa-minus:hover {
+.fa-plus,
+.fa-minus:hover {
   cursor: pointer;
 }
 
@@ -342,10 +344,9 @@ ul li a:hover {
 
 .noSelect.active-link {
   color: rgb(43, 128, 238);
-} 
+}
 
 @media only screen and (max-width: 1100px) {
-
   .coin-column {
     width: 100%;
     align-items: center;
@@ -371,7 +372,6 @@ ul li a:hover {
 }
 
 @media only screen and (max-width: 800px) {
-
   .graph-container {
     width: 90vw;
   }
@@ -398,11 +398,9 @@ ul li a:hover {
   .wallet-current {
     margin: 0;
   }
-
 }
 
 @media only screen and (max-width: 500px) {
-
   .logo h2 {
     font-size: 20px;
   }
@@ -438,11 +436,9 @@ ul li a:hover {
   .graph-coin {
     width: 95vw;
   }
-
 }
 
 @media only screen and (max-width: 450px) {
-
   .logo {
     margin: 0;
   }
@@ -470,11 +466,9 @@ ul li a:hover {
   .btn {
     display: none;
   }
-
 }
 
 @media only screen and (max-width: 380px) {
-
   .wallet-pic {
     height: 30px;
   }
