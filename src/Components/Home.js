@@ -63,20 +63,20 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGra
 
         return (
 
-            <div className="coin-detail noSelect" key={coin.id} onClick={() => dataHandler(coin)}>
+            <div className="coin-detail noSelect" key={coin?.id} onClick={() => dataHandler(coin)}>
 
                 <div className="coin-info">
-                    <img src={coin.image} className="coin-pic" alt="coin pic" />
+                    <img src={coin?.image} className="coin-pic" alt="coin pic" />
 
                     <div className="coin-data">
-                        <span className="coin-name">{coin.name}</span>
-                        <span>{coin.symbol}</span>
+                        <span className="coin-name">{coin?.name}</span>
+                        <span>{coin?.symbol}</span>
                     </div>
                 </div>
 
                 <div className="coin-current">
                     <span> &#x20B9; {coin.current_price.toLocaleString()}</span>
-                    <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h.toFixed(2)}` : coin.price_change_percentage_24h.toFixed(2)}%</span>
+                    <span className={coin.price_change_percentage_24h > 0 ? "green" : "red"}> {coin.price_change_percentage_24h > 0 ? `+${coin.price_change_percentage_24h?.toFixed(2)}` : coin.price_change_percentage_24h?.toFixed(2)}%</span>
                 </div>
 
                 {isMobile ? <div className="wallet-button">
